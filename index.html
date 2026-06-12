@@ -318,7 +318,7 @@ section{padding:120px 0;position:relative}
 
 /* ── Marquee ── */
 .partner-strip{background:var(--paper);border-block:1px solid var(--line-2);padding:40px 0;overflow:hidden}
-.strip-head{text-align:center;margin-bottom:28px;font-size:.68rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--moss)}
+.strip-head{text-align:center;margin-bottom:28px;font-size:1.05rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--moss)}
 .marquee-track{display:flex;gap:0;width:max-content}
 .marquee-track .run{display:flex;gap:64px;animation:mq 40s linear infinite}
 .marquee-track .run:hover{animation-play-state:paused}
@@ -928,8 +928,13 @@ section{padding:120px 0;position:relative}
   .fcm-modal{border-radius:16px;max-height:96vh}
 }
 /* ── Vision & Values ── */
-.vv-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
-.vv-card{border-radius:var(--r-lg);padding:44px 40px;position:relative;overflow:hidden}
+.vv-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.vv-card{border-radius:var(--r-lg);padding:44px 40px;position:relative;overflow:hidden;height:100%;display:flex;flex-direction:column}
+.vv-focus{margin:auto 0 0;padding:24px 0 0;border-top:1px solid rgba(229,193,107,.28)}
+.vv-focus-lead{font-family:var(--sans);font-size:.85rem;letter-spacing:.02em;color:rgba(253,250,244,.62);margin-bottom:14px}
+.vv-pillars{list-style:none;margin:0;padding:0}
+.vv-pillars li{display:flex;align-items:center;gap:14px;font-family:var(--serif);font-size:1.18rem;color:var(--cream);padding:9px 0}
+.vv-pillars li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--brass-lt);flex:0 0 7px}
 .vv-vision{background:linear-gradient(150deg,var(--moss) 0%,#16462a 100%);color:var(--cream)}
 .vv-values{background:var(--white);border:1px solid var(--line-2)}
 .vv-tag{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;font-weight:600;margin-bottom:22px}
@@ -1158,7 +1163,7 @@ section{padding:120px 0;position:relative}
       <div class="section-head rv">
         <div class="label" style="color:var(--brass-lt)">Who We Are</div>
         <h1 class="title" style="color:var(--cream)">Built on <em style="color:var(--brass-lt)">17 years</em> of field presence.</h1>
-        <p class="copy" style="color:rgba(253,250,244,.72)">DCL — Development, Culture & Leadership — is a Lebanese NGO headquartered in Syr Al Dennieh, North Lebanon, registered and operating since 2008. We design and implement accountable humanitarian, education, and food security programmes across Lebanon in partnership with institutional donors, UN agencies, ministries, and local municipalities.</p>
+        <p class="copy" style="color:rgba(253,250,244,.72)">Development, Culture & Leadership is a Lebanese NGO headquartered in Syr Al Dennieh, North Lebanon, registered and operating since 2008. We design and implement accountable humanitarian, education, and food security programmes across Lebanon in partnership with institutional donors, UN agencies, ministries, and local municipalities.</p>
       </div>
     </div>
   </header>
@@ -1204,6 +1209,15 @@ section{padding:120px 0;position:relative}
           <div class="vv-tag">Our Vision</div>
           <p class="vv-lead">A society where people from all walks of life, faiths, and communities come together in respect and collaboration.</p>
           <p class="vv-body">By promoting <strong>Peace, Love, and Reconciliation</strong>, we aim to create inclusive spaces where dialogue replaces division, empathy replaces mistrust, and shared responsibility strengthens social bonds. Our goal is to inspire and model these interactions regionally, so diversity becomes a source of strength rather than conflict.</p>
+          <div class="vv-focus">
+            <div class="vv-focus-lead">We pursue this vision through:</div>
+            <ul class="vv-pillars">
+              <li>Education &amp; Nutrition</li>
+              <li>Food Security</li>
+              <li>Youth Development</li>
+              <li>Emergency Response</li>
+            </ul>
+          </div>
         </article>
         <article class="vv-card vv-values">
           <div class="vv-tag">Our Values</div>
@@ -1506,7 +1520,7 @@ section{padding:120px 0;position:relative}
         <div class="label">Where We Work</div>
         <h1 class="title">Field presence across <em>North Lebanon &amp; Akkar.</em></h1>
         <p class="copy">DCL operates directly in the schools and communities it serves. The map below shows the public schools and community kitchens where our programmes are active across the North Lebanon and Akkar governorates.</p>
-        <p class="copy" style="margin-top:16px">We don't work at arm's length. Our teams are in daily contact with the children and students we serve, working hand-in-hand with school supervisors, principals, community leaders, and local municipalities. From the kitchen to the classroom, DCL is embedded in the field — present where decisions are made, where meals are served, and where outcomes are measured.</p>
+        <p class="copy" style="margin-top:16px">We don't work at arm's length. Our teams are in daily contact with the children and students we serve, working hand-in-hand with school supervisors, principals, community leaders, and local municipalities. From the kitchen to the classroom, DCL is embedded in the field, present where decisions are made, where meals are served, and where outcomes are measured.</p>
       </div>
     </div>
   </header>
@@ -1612,7 +1626,6 @@ section{padding:120px 0;position:relative}
           fillOpacity: 0.92
         }).addTo(map);
         var label = (d.n || '').replace(/"/g,'').replace(/\n/g,' — ').trim();
-        m.bindPopup('<strong>'+label+'</strong><br><span style="color:'+col+'">'+(isK?'Community Kitchen':'School Site')+'</span> · '+d.a);
         markers.push({ m:m, d:d });
       });
 
@@ -1773,7 +1786,7 @@ section{padding:120px 0;position:relative}
       <div class="rv">
         <div class="label">Flagship programme</div>
         <h1 class="title" style="margin-top:20px">Supporting education through <em>nutrition.</em></h1>
-        <p class="copy">DCL implements large-scale school feeding activities supporting vulnerable children across Lebanon — daily nutritious meals, operational monitoring, and community engagement systems developed with educational and humanitarian stakeholders.</p>
+        <p class="copy">DCL implements large-scale school feeding activities supporting vulnerable children across Lebanon: daily nutritious meals, operational monitoring, and community engagement systems developed with educational and humanitarian stakeholders.</p>
         <div class="btns" style="margin-top:36px">
           <a class="btn btn-primary" href="#" data-page="contact">Discuss Partnership <span class="btn-arr">→</span></a>
           <a class="btn btn-outline" href="#sm-results">View Results</a>
@@ -1819,7 +1832,7 @@ section{padding:120px 0;position:relative}
       <div class="section-head rv">
         <div class="label">Operational excellence</div>
         <h2 class="title">The systems <em>behind the meals.</em></h2>
-        <p class="copy">DCL is not only distributing food — we manage quality, accountability, protection, and data at every step of delivery.</p>
+        <p class="copy">DCL is not only distributing food; we manage quality, accountability, protection, and data at every step of delivery.</p>
       </div>
       <div class="ops-grid rv" style="border-radius:var(--r-lg);overflow:hidden">
         <div class="ops-cell"><strong>FSQ Monitoring</strong><small>Supplier and warehouse oversight with documented corrective actions</small></div>
@@ -2421,7 +2434,7 @@ section{padding:120px 0;position:relative}
       // School Meals page
       'sm-label':'Flagship programme',
       'sm-h1':'Supporting education through <em>nutrition.</em>',
-      'sm-copy':'DCL implements large-scale school feeding activities supporting vulnerable children across Lebanon — daily nutritious meals, operational monitoring, and community engagement systems developed with educational and humanitarian stakeholders.',
+      'sm-copy':'DCL implements large-scale school feeding activities supporting vulnerable children across Lebanon: daily nutritious meals, operational monitoring, and community engagement systems developed with educational and humanitarian stakeholders.',
       'sm-btn1':'Discuss Partnership','sm-btn2':'View Results',
       'sm-panel-h3':'Programme snapshot',
       'sm-panel-p':'A mixed-modality school meals approach combining daily in-school support, kitchen operations, take-home rations, and training for school-level actors.',
@@ -2436,7 +2449,7 @@ section{padding:120px 0;position:relative}
       'geo-label':'Geographic coverage','geo-h2':'Coverage across <em>priority areas.</em>',
       'region1':'North Lebanon','region2':'Akkar','region3':'Beirut','region4':'Mount Lebanon',
       'ops-label':'Operational excellence','ops-h2':'The systems <em>behind the meals.</em>',
-      'ops-copy':'DCL is not only distributing food — we manage quality, accountability, protection, and data at every step of delivery.',
+      'ops-copy':'DCL is not only distributing food; we manage quality, accountability, protection, and data at every step of delivery.',
       'ops1-h':'FSQ Monitoring','ops1-p':'Supplier and warehouse oversight with documented corrective actions',
       'ops2-h':'Digital Tracking','ops2-p':'Every distribution logged and monitored in real time',
       'ops3-h':'PSEA Compliance','ops3-p':'Safeguarding and protection standards across all programme sites',
@@ -2474,7 +2487,7 @@ section{padding:120px 0;position:relative}
       // Who We Are page
       'about-label':'Who We Are',
       'about-h1':'Built on <em>17 years</em> of field presence.',
-      'about-copy':'DCL — Development, Culture & Leadership — is a Lebanese NGO headquartered in Syr Al Dennieh, North Lebanon, registered and operating since 2008. We design and implement accountable humanitarian, education, and food security programmes across Lebanon in partnership with institutional donors, UN agencies, ministries, and local municipalities.',
+      'about-copy':'Development, Culture & Leadership is a Lebanese NGO headquartered in Syr Al Dennieh, North Lebanon, registered and operating since 2008. We design and implement accountable humanitarian, education, and food security programmes across Lebanon in partnership with institutional donors, UN agencies, ministries, and local municipalities.',
       'about-m1-h3':'Mission',
       'about-m1-p':'To deliver accountable, community-centred programmes that improve food security, access to education, and social protection for vulnerable populations across Lebanon.',
       'about-m2-h3':'Approach',
